@@ -1,0 +1,28 @@
+user part-
+
+register- username,email, password   -all user will login as basic member
+profile will be fill up with ur personal information after register
+
+login- email and password ——————————done design
+
+if sucess - go to homepage 
+if already acc exist- will validation
+
+
+
+
+user click book-
+
+user have to choose date of booking(example:today),choose date of reservation, court , enter username ,enter email, enter contact, after done filling , new page show the payment to fill up the card details and submit (save the date of booking(example:today),choose date of reservation, court , enter username ,enter email, enter contact)
+user click membership-(change name)
+user able to choose the member , when click the join button , new page will shown user to fill the card details to pay and submit , then the user able to view to profile that have joined.
+Profile(create one more page for profile)- user able to check the own profile(show username, email, and the membership plan will show start date and end date  , and the user able to cancel the plan in profile
+(change the receipt to the myBooking to show the user have book , and able to cancel booking.)
+user able to view the mybook page and able to cancel the booking 
+
+
+
+admin-(create new page for admin for the duty)
+admin able to view the duration end date of user and cancel the plan and become to basic plan
+view all the booking of user 
+

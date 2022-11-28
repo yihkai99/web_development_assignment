@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/html.html to edit this template
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <style>
+        *{
+          margin:0;
+          padding:0;
+          box-sizing: border-box;
+        }
+        ol,
+        ul{
+          list-style: none;  
+        }
+        .table{
+            max-width: 1200px;
+            margin: 50px auto 0;
+            padding: 1.2rem;
+            box-shadow: 0 0.15rem 1.75rem #0033ff;
+        }
+        .table .top-title{
+          background-color: #ddd;
+          border-bottom: 1px solid #000000;
+          padding:1rem 1.35rem;
+        }
+        .top-title h2{
+            font-size: 16px;
+            color:#33485d;
+            font-weight: 500;
+        }
+        .wrap-content{
+            padding: 1.2rem; 
+        }
+        .search{
+             outline: none;
+             border: 1px solid #9999ff;
+             margin: 10px 15px;
+             width: 100%;
+             max-width: 320px;
+             padding: 8px 10px;
+             border-radius: 4px;
+        }
+        .search::placeholder{
+            color: #475993;
+            font-size: 14px;
+        }
+        .wrap-title{
+            padding: 10px 0;
+        }
+        .wrap-title.id,
+         .wrap-title.country,
+        .wrap-title.population,
+        .wrap-title.area,
+        .wrap-title.date,
+        .wrap-title.time{
+            font-size: 16px;
+            font-weight: normal;
+            color:#66b9ee;
+        }
+        .wrap-title,
+        .wrap-item{
+            display: grid;
+            align-items: center;
+            grid-template-columns: 10fr 25fr 25fr 20fr 25fr 25fr ;
+        }
+        .wrap-title{
+            border-bottom: 1px solid #000000 ;
+        }
+        .wrap-item{
+            padding: 10px 0;
+            border-bottom: 1px solid #000000;
+        }
+        .wrap-item:nth-child(even){
+            background-color: #9966ff;
+        }
+        .wrap-item.id{
+            font-size: 16px;
+            color:#66b9ee;
+            font-weight: bold;
+        }
+        .id{
+            padding: 0 10px;
+        }
+        .wrap-item.country,
+        .wrap-item.population,
+        .wrap-item.area,
+        .wrap-item.date,
+        .wrap-item.time{
+            font-size: 16px;
+            font-weight:400;
+        }
+        .wrap-item.country{
+            display: flex;
+            align-items: center;
+        }
+        .wrap-pagination{
+            display: flex;
+            width: max-content;
+            border: 1px solid black;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .wrap-pagination .number{
+            cursor: pointer;
+            width:20px;
+            border-right: 1px solid black;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            justify-content: center;
+        }
+        .wrap-pagination .number:last-child{
+            border-right: none;
+        }
+        .wrap-pagination.number.selected{
+            background-color: #0033ff;
+            color: white;
+        }
+        @media(max-width:767px)
+        {
+            .top-title h2{
+                font-size: 14px;
+            }
+            .wrap-title.id,
+         .wrap-title.country,
+        .wrap-title.population,
+        .wrap-title.area,
+          .wrap-item.id,
+          .wrap-item.country,
+        .wrap-item.population,
+        .wrap-item.area,
+        .wrap-item.date,
+        .wrap-item.time{
+            font-size: 12px;
+        }
+        .wrap-title,
+        wrap-item{
+            grid-template-columns: 15fr 35fr 25fr 25fr;
+        }
+        }
+        </style>
+    <body>
+        <div class="wrapper">
+        <div class="table">
+            <div class="top-title">
+                <h2>History</h2>
+            </div>
+            <div class="wrap-input">
+                <input type="text"placeholder="Search text...." class="search">
+            </div>
+            <div class="wrap-content">
+                <div class="wrap-title">
+                    <div class="id">
+                        <h4>#</h4>
+                    </div>
+                    <div class="country">
+        
+                        <h4>Event Type</h4>
+                    </div>
+                    <div class="area">
+                        <h4>Event Place</h4>
+                    </div>
+                    <div class="population">
+                        <h4>No of guest</h4>
+                    </div>
+                    <div class="Date">
+                        <h4>Preferred Date</h4>
+                    </div>
+                    <div class="Time">
+                        <h4>Preferred Time</h4>
+                    </div>
+
+                        
+                </div>
+                <div class="wrap-item">
+                    <div class="id">
+                        <h4>1</h4>
+                    </div>
+                    <div class="country">
+                        <img src=""alt="">
+                        <h4>Country</h4>
+                    </div>
+                    <div class="area">
+                        <h4>Area</h4>
+                    </div>
+                    <div class="population">
+                        <h4>Population</h4>
+                    </div>
+                </div>
+                <div class="wrap-item">
+                    <div class="id">
+                        <h4>1</h4>
+                    </div>
+                    <div class="country">
+                        <img src=""alt="">
+                        <h4>Country</h4>
+                    </div>
+                    <div class="area">
+                        <h4>Area</h4>
+                    </div>
+                    <div class="population">
+                        <h4>Population</h4>
+                    </div>
+                    <div class="Date">
+                        <h4>Preferred Date</h4>
+                    </div>
+                    <div class="Time">
+                        <h4>Preferred Time</h4>
+                    </div>
+                </div>
+                <div class="wrap-item">
+                    <div class="id">
+                        <h4>1</h4>
+                    </div>
+                    <div class="country">
+                        <img src=""alt="">
+                        <h4>Country</h4>
+                    </div>
+                    <div class="area">
+                        <h4>Area</h4>
+                    </div>
+                    <div class="population">
+                        <h4>Population</h4>
+                    </div>
+                    <div class="Date">
+                        <h4>Preferred Date</h4>
+                    </div>
+                    <div class="Time">
+                        <h4>Preferred Time</h4>
+                    </div>
+                     </div>
+                    <ul class="wrap-pagination">
+                        <li class="number"><</li>
+                        <li class="number selected">1</li>
+                        <li class="number">2</li>
+                        <li class="number">3</li>
+                        <li class="number">4</li>
+                        <li class="number">></li>
+                    </ul>
+               
+            </div>    
+            </div>
+        </div>
+    </body>
+</html>
