@@ -1,0 +1,74 @@
+<?php 
+if(isset($_POST['save'])){ 
+    
+    session_start();
+    $dbc = mysqli_connect("localhost","root","");
+    mysqli_select_db($dbc, "clinic_reservation");
+    
+    echo'<script>
+        function submissionAlert() {
+                alert("The item has been added.");
+        }
+        </script>';
+    
+    $allday = isset($allday);
+    $id = $_SESSION['identifier'];  
+    $user_name = $_POST['userName'];
+    $user_gender = $_POST['sex'];
+    $user_email = $_POST['email'];
+    $user_phoneNo = $_POST['phoneNo'];
+    $start = $_POST['start_datetime'];
+    $end = $_POST['end_datetime'];
+    $doctorName = $_POST['doctorName'];
+    
+    if(substr($id, 0, 1)=="U"){
+        
+        $query = "INSERT INTO booking_table (user_id, user_name, user_gender, user_email, user_phoneNo, start, end, status_id, doctor_name) VALUES ('$id' ,'$user_name', '$user_gender', '$user_email', '$user_phoneNo', '$start', '$end', '1', '$doctorName')";
+
+        mysqli_query($dbc,$query);
+        echo "<script> submissionAlert(); header('Location: timetable.php' );</script>";
+
+        $res = mysqli_query($dbc,"SELECT * FROM booking_table ORDER BY booking_id DESC LIMIT 1");
+        $queryResult = mysqli_num_rows($res);
+
+        if($queryResult > 0){
+            while($row =mysqli_fetch_array($res)){
+            $booking_id = $row['booking_id'];
+            $query2 = "INSERT INTO booking_status (user_id, booking_id, status_id, status) VALUES ('$id','$booking_id' ,'1', 'Awaiting for approval')";
+            mysqli_query($dbc,$query2);
+            echo "<script> submissionAlert(); header('Location: timetable.php' );</script>";                    
+        }
+    }
+    if(substr($id, 0, 1)=="A"){
+        $res1 = mysqli_query($dbc,"SELECT * FROM booking_table");
+        $queryResult1 = mysqli_num_rows($res1);
+
+        if($queryResult1 > 0){
+            while($row=mysqli_fetch_array($res1)){
+                if ($id = $row['user_id']){
+                    $getUserID = $row['booking_id'];   
+                }
+            }   
+        }
+    
+            $query1 = "INSERT INTO booking_table (user_id, user_name, user_gender, user_email, user_phoneNo, start, end, status_id, doctor_name) VALUES ('$getUserID' ,'$user_name', '$user_gender', '$user_email', '$user_phoneNo', '$start', '$end', '1', '$doctorName')";
+
+            mysqli_query($dbc,$query1);
+            echo "<script> submissionAlert(); header('Location: timetable.php' );</script>";
+
+            $res = mysqli_query($dbc,"SELECT * FROM booking_table ORDER BY booking_id DESC LIMIT 1");
+            $queryResult1 = mysqli_num_rows($res);
+
+            if($queryResult1 > 0){
+                while($row =mysqli_fetch_array($res)){
+                $booking_id = $row['booking_id'];
+                $query2 = "INSERT INTO booking_status (user_id, booking_id, status_id, status) VALUES ('$getUserID','$booking_id' ,'1', 'Awaiting for approval')";
+                mysqli_query($dbc,$query2);
+                echo "<script> submissionAlert(); header('Location: timetable.php' );</script>";                    
+            }
+            }
+    }
+                   
+    
+} } 
+?>

@@ -1,0 +1,49 @@
+<?php
+      if(isset($_POST["register"])){
+         $servername = "localhost";
+        $username = "root";
+             $password = "";
+               $dbname = "badminton";
+
+             // Create connection
+                                            $conn = mysqli_connect($servername, $username, $password, $dbname);
+                                            // Check connection
+                                            if (!$conn) {
+                                                 die("Connection failed: " . mysqli_connect_error());
+                                                    }
+                                                    else {
+                                                                $useremail = strtolower($_POST['exampleInputEmail']);
+                                                                $result1 = mysqli_query($conn, "SELECT userEmail FROM register_login WHERE userEmail='".$useremail."' ");
+
+                                                             while($row = mysqli_fetch_assoc($result1)){
+                                                                 $check_useremail = $row['userEmail'];
+                                                             }
+                                                                if($useremail == $check_useremail){
+                                                                    echo "<script> alert('Email has been used!');window.history.back(); </script>";
+                                                                }
+
+                                                                else{
+                                                                    $name = $_POST['exampleInputuname1'];
+                                                                    $email = strtolower($_POST['exampleInputEmail']);
+                                                                    $pnumber = $_POST['exampleInputContact1'];
+                                                                    $password = $_POST['exampleInputPassword1'];
+                                                                    $memberType = "basic";
+
+                                                                    $sql = "INSERT INTO register_login (userName, userContact, userPassword, userEmail, memberType) VALUES ('$name', '$pnumber', '$password', '$email', '$memberType')";
+
+                                                                    if (mysqli_query($conn, $sql)) {
+
+                                                                        echo "<script> alert('Thanks for joining us!');window.location= \"login.php\"; </script>";
+                                                                    }
+                                                                    else {
+                                                                        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                                                                    }
+                                                                }
+
+                                                    }
+                                                    mysqli_close($conn);
+                                                        }
+
+                                                     else{
+                                            ?>
+          
